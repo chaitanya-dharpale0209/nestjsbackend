@@ -35,7 +35,10 @@ export class VendorsService {
 
   async startRegistration(dto: StartRegistrationDto) {
     const { email } = dto;
+    //here include the mobile number otp (just accept it for temp purpose, later on will be adding twilio)
 
+
+    
     // Check if email exists
     const existingUser = await this.userModel.findOne({
       'ContactDetails.EmailAddress': email.toLowerCase(),

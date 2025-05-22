@@ -6,5 +6,8 @@ export class StartRegistrationDto {
   @IsEmail()
   @IsNotEmpty()
   email: string;
+
+  //
+  
   DocumentsUpload : DocumentsUpload;
 }
