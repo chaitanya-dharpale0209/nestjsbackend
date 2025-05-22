@@ -182,14 +182,14 @@ async completeRegistration(
   };
 }
 
-  async getVendor(id: string) {
-    const vendor = await this.userModel.findById(id).select('-password').exec();
-    if (!vendor) {
-      throw new NotFoundException('Vendor not found');
-    }
-    return {
-      success: true,
-      data: vendor,
-    };
-  }
+  // async getVendor(id: string) {
+  //   const vendor = await this.userModel.findById(id).select('-password').exec();
+  //   if (!vendor) {
+  //     throw new NotFoundException('Vendor not found');
+  //   }
+  //   return {
+  //     success: true,
+  //     data: vendor,
+  //   };
+  // }
 }

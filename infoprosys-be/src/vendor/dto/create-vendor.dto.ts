@@ -22,4 +22,7 @@ export class CreateVendorDto {
 
   @IsNotEmpty()
   password: string;
+
+  @IsNotEmpty()
+  verified: boolean = false;
 }
