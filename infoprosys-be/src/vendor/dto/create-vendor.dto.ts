@@ -24,5 +24,7 @@ export class CreateVendorDto {
   password: string;
 
   @IsNotEmpty()
-  verified: boolean = false;
+  verified: string = "pending";
+
+  role:string="vendor"
 }

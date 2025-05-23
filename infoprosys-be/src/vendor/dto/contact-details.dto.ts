@@ -7,10 +7,12 @@ export class ContactDetailsDto {
 
   @IsEmail()
   @IsNotEmpty()
-  EmailAddress: string;
+  email: string;
 
   @IsString()
   @IsNotEmpty()
   // @IsPhoneNumber() - You can uncomment this if you want strict phone validation
   PhoneNumber: string;
+
+  role:string
 }

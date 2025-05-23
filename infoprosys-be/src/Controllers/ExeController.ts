@@ -9,4 +9,9 @@ export class ExecController {
   getVendorById(@Param('id') id: string) {
     return this.execService.getVendor(id);
   }
+
+  @Get('getall')
+  getAllVendors(){
+    return this.execService.getAllVendors();
+  }
 }

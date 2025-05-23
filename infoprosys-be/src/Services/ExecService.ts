@@ -22,4 +22,16 @@ export class execService{
               data: vendor,
             };
     }
+
+  async getAllVendors() {
+  const vendors = await this.usermodel.find().select('-password').exec(); // Use find() not findAll()
+  if (!vendors || vendors.length === 0) {
+    throw new NotFoundException('No vendors found');
+  }
+  return {
+    success: true,
+    data: vendors,
+  };
+}
+
 }

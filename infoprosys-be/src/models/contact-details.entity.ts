@@ -7,7 +7,7 @@ export class ContactDetails extends Document {
   PersonaName: string;
 
   @Prop({ required: true, trim: true, lowercase: true })
-  EmailAddress: string;
+  email: string;
 
   @Prop({ required: true, trim: true })
   PhoneNumber: string;

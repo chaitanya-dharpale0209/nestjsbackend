@@ -6,6 +6,7 @@ import { User, UserSchema } from '../models/user.entity';
 import { TempRegistration, TempRegistrationSchema } from '../models/temp-registration.entity';
 import { MulterModule } from '@nestjs/platform-express';
 import { memoryStorage } from 'multer';
+import { TwilioModule } from 'src/Modules/Twilio/twilio.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { memoryStorage } from 'multer';
     MulterModule.register({
       storage: memoryStorage(),
     }),
+    TwilioModule
   ],
   controllers: [VendorsController],
   providers: [VendorsService],
