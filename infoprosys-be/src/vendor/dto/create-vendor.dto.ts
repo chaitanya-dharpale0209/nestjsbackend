@@ -26,5 +26,6 @@ export class CreateVendorDto {
   @IsNotEmpty()
   verified: string = "pending";
 
-  role:string="vendor"
+  role:string;
+  email:string;
 }

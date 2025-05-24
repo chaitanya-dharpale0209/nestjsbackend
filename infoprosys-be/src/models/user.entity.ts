@@ -42,14 +42,19 @@ export class User extends Document {
   @Prop({ required: false, enum: Role })
   role: Role;
 
+  @Prop({required:false,})
+  email:string;
+
   @Prop({ enum: Status, default: Status.Pending })
   status: Status;
 
   @Prop()
   refreshToken?: string;
+
+  @Prop({ type: [{ type: Types.ObjectId, ref: 'VendorProduct' }] })
+  products: Types.ObjectId[];
 }
 
-// ✅ This is key — extend `_id` explicitly
 export type UserDocument = User & Document & {
   _id: Types.ObjectId;
 };
