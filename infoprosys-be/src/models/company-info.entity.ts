@@ -6,7 +6,7 @@ export class CompanyInfo extends Document {
   @Prop({ required: true, trim: true })
   BusinessName: string;
 
-  @Prop({ required: true, trim: true, uppercase: true })
+  @Prop({ required: false, trim: true, uppercase: true, unique:true })
   GSTNumber: string;
 
   @Prop({ required: true, trim: true, uppercase: true })

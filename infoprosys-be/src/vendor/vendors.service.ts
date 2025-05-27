@@ -176,19 +176,42 @@ async completeRegistration(
   if (!tempRegistration) {
     throw new BadRequestException('Email/phone not verified. Please complete OTP verification first.');
   }
+  
+   // First check for GST number separately
+  if (dto.CompanyInfo.GSTNumber) {
+    const existingGST = await this.userModel.findOne({
+      'CompanyInfo.GSTNumber': dto.CompanyInfo.GSTNumber
+    });
+    
+    if (existingGST) {
+      throw new ConflictException('This GST number is already registered');
+    }
+  }
 
   // Check if user already exists (double check)
   const existingUser = await this.userModel.findOne({
     $or: [
       { 'ContactDetails.email': dto.ContactDetails.email?.toLowerCase() },
-      { 'ContactDetails.PhoneNumber': dto.ContactDetails.PhoneNumber }
+      { 'ContactDetails.PhoneNumber': dto.ContactDetails.PhoneNumber },
+      
     ]
   });
 
-  if (existingUser) {
-    throw new ConflictException('User with this email or phone already exists');
+  // if (existingUser) {
+  //   throw new ConflictException('User with this email or phone already exists');
+  // }
+if (existingUser) {
+    // Determine which field caused conflict
+    if (existingUser.ContactDetails.email === dto.ContactDetails.email) {
+      throw new ConflictException('Email already registered');
+    }
+    if (existingUser.ContactDetails.PhoneNumber === dto.ContactDetails.PhoneNumber) {
+      throw new ConflictException('Phone number already registered');
+    }
+    if (existingUser.CompanyInfo.GSTNumber === dto.CompanyInfo.GSTNumber) {
+      throw new ConflictException('GST number already registered');
+    }
   }
-
   // Process files into the documentsUpload object
   const documentsUpload = {};
 

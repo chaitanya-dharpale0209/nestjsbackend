@@ -14,4 +14,19 @@ export class ExecController {
   getAllVendors(){
     return this.execService.getAllVendors();
   }
+
+   @Get('vendors/pending')
+  getPendingVendors() {
+    return this.execService.getPendingVendors();
+  }
+
+  @Get('vendors/approved')
+  getApprovedVendors() {
+    return this.execService.getApprovedVendors();
+  }
+
+  @Get('vendors/rejected')
+  getRejectedVendors() {
+    return this.execService.getRejectedVendors();
+  }
 }

@@ -26,3 +26,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     };
   }
 }
+
+/*
+when user logs in, it checks 
+*/

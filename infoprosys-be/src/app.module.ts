@@ -26,7 +26,7 @@ import { TwilioModule } from './Modules/Twilio/twilio.module';
     VendorsModule,
     ExecModules,
      UsersModule,
-    AuthModule,
+     AuthModule,
     TwilioModule,
   ],
 })
